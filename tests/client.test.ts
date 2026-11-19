@@ -5,7 +5,7 @@ import { formatUSDC, parseUSDC, formatShares, parseShares, formatTokens, parseTo
 import { SDKError, SDKErrorCode } from '../src/errors'
 
 describe('SevenNSevenD Client', () => {
-  const rpcUrl = 'https://rpc.sepolia.org'
+  const rpcUrl = 'https://ethereum-sepolia-rpc.publicnode.com'
 
   it('should initialize with testnet config', () => {
     const sdk = new SevenNSevenD({ rpcUrl, network: 'testnet' })
@@ -57,7 +57,7 @@ describe('SevenNSevenD Client', () => {
 })
 
 describe('Write operations require wallet', () => {
-  const sdk = new SevenNSevenD({ rpcUrl: 'https://rpc.sepolia.org' })
+  const sdk = new SevenNSevenD({ rpcUrl: 'https://ethereum-sepolia-rpc.publicnode.com' })
 
   it('vault.deposit should throw without wallet', async () => {
     await expect(sdk.vault.deposit('100')).rejects.toThrow(SDKError)
