@@ -55,7 +55,7 @@ console.log(`Value: $${balance.assetsFormatted} USDC`)
 |-----------|------|----------|-------------|
 | `rpcUrl` | `string` | Yes | Ethereum RPC URL |
 | `privateKey` | `` `0x${string}` `` | No | Private key for write operations |
-| `network` | `'mainnet' \| 'testnet'` | No | Network (default: `'testnet'`) |
+| `network` | `'testnet'` | No | Network (default: `'testnet'`); `'mainnet'` is not yet deployed and will throw |
 
 ### Vault (`sdk.vault`)
 
@@ -115,7 +115,7 @@ import {
 | Network | Chain | Status |
 |---------|-------|--------|
 | `testnet` | Sepolia | Active |
-| `mainnet` | Arbitrum | Planned |
+| `mainnet` | Arbitrum | **Not yet deployed** — constructing with `network: 'mainnet'` throws until launch |
 
 ## Contract Addresses (Sepolia)
 

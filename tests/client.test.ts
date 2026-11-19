@@ -21,10 +21,10 @@ describe('SevenNSevenD Client', () => {
     expect(sdk.addresses).toEqual(TESTNET_ADDRESSES)
   })
 
-  it('should initialize with mainnet config', () => {
-    const sdk = new SevenNSevenD({ rpcUrl, network: 'mainnet' })
-    expect(sdk.network).toBe('mainnet')
-    expect(sdk.addresses).toEqual(MAINNET_ADDRESSES)
+  it('should throw when initializing with mainnet (not yet deployed)', () => {
+    expect(() => new SevenNSevenD({ rpcUrl, network: 'mainnet' })).toThrow(
+      /Network "mainnet" has no deployed contracts yet/
+    )
   })
 
   it('should initialize with private key', () => {
@@ -98,9 +98,18 @@ describe('Address Configuration', () => {
     expect(addresses.governanceDAO).toBe('0x3DE4AB52e6Aaba118aa681eC83fb7c1bC176f664')
   })
 
-  it('should return mainnet addresses', () => {
-    const addresses = getAddresses('mainnet')
-    expect(addresses).toEqual(MAINNET_ADDRESSES)
+  it('getAddresses("mainnet") throws until mainnet is deployed', () => {
+    expect(() => getAddresses('mainnet')).toThrow(
+      /Network "mainnet" has no deployed contracts yet/
+    )
+  })
+
+  it('no testnet address is the zero address', () => {
+    const addrs = getAddresses('testnet')
+    const zero = '0x0000000000000000000000000000000000000000'
+    for (const [key, value] of Object.entries(addrs)) {
+      expect(value, `${key} must not be the zero address`).not.toBe(zero)
+    }
   })
 })
 
