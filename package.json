@@ -39,6 +39,14 @@
     "sdk",
     "viem"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/7N7Dai/7n7d-sdk.git"
+  },
+  "homepage": "https://docs.7n7d.com/sdk/api-reference",
+  "bugs": {
+    "url": "https://github.com/7N7Dai/7n7d-sdk/issues"
+  },
   "license": "MIT",
   "peerDependencies": {
     "viem": ">=2.0.0"
